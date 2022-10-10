@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  render_server:
+    image: jordonbibian/webserver:latest
+    environment:
+      - WS=-w
+      - myPORT=80
+    ports:
+      - "80:80"
+  coturn_server:
+    image: coturn/coturn:latest
+    command:
+    - --external-ip='$$(detect-external-ip)'
+    - --log-file=stdout
+    - --listening-port=3478
+    - --min-port=49160
+    - --max-port=42000
+    - --lt-cred-mech
+    - --fingerprint
+    network_mode: "host"
