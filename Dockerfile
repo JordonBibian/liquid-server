@@ -5,7 +5,7 @@ RUN npm install
 RUN npm run build
 
 ARG websocket='-w'
-ARG argPort="80"
+ARG argPort="443"
 
 ENV WS=$websocket
 ENV myPORT=$argPort
